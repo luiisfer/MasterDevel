@@ -15,4 +15,6 @@ public interface MessagesD {
     
     public JSONArray getMessages(String tag);
     
+    public boolean validateKey(String key);
+    
 }

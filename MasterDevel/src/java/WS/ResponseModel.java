@@ -45,32 +45,11 @@ public class ResponseModel {
             case 500:
                 result = "Error fatal";
                 break;
-            case 504:
-                result = "Error de conectividad a los sistemas externos";
-                break;
-            case 400:
-                result = "Tipo de datos o sintaxis invalidos";
-                break;
-            case 401:
-                result = "Encabezado vacio o encabezado invalido";
-                break;
-            case 404:
-                result = "No se encontro";
-                break;
-            case 201:
-                result = "Creado";
-                break;
-            case 409:
-                result = "Hay un conflicto";
-                break;
-            case 304:
+            case 403:
                 result = "No modificado";
                 break;
             case 204:
                 result = "No hay contenido";
-                break;
-            case 506:
-                result = "No aceptable";
                 break;
             case 200:
                 result = "Exitoso";

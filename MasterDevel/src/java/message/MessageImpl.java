@@ -16,43 +16,46 @@ import org.json.JSONObject;
  *
  * @author luiis
  */
-
 @Default
-public class MessageImpl implements MessageService{
+public class MessageImpl implements MessageService {
 
     @Inject
     private MessageD messageD;
-    
+
     private ResponseModel res;
-    
+
     @Override
-    public Response createMessage(String request , String xkey) {
+    public Response createMessage(String request, String xkey) {
         try {
             res = new ResponseModel();
             JSONObject req;
             String msg;
             String tags;
             req = new JSONObject(request);
-            msg  = req.getString("msg");
+            msg = req.getString("msg");
             tags = req.getString("tags");
-            JSONObject status = messageD.createMessage(msg, tags);
-            if (status.optBoolean("status")) {
-                res.setCode(200).setBody(status.optLong("newId"));
-            } else {
-                res.setCode(409);
+            if (messageD.validateKey(xkey) == true) {
+                JSONObject status = messageD.createMessage(msg, tags);
+                if (status.optBoolean("status")) {
+                    res.setCode(200).setBody(status.optLong("newId"));
+                } else {
+                    res.setCode(409);
+                }
+            }
+            else{
+                res.setCode(403);
             }
 
-            return res.getRes();    
+            return res.getRes();
         } catch (JSONException ex) {
             res.setCode(500);
             System.out.println("error" + ex);
-            return res.getRes();   
+            return res.getRes();
         }
     }
-    
-    
+
     @Override
-    public Response getMessage(String id, String xkey){
+    public Response getMessage(String id, String xkey) {
         res = new ResponseModel();
         try {
             JSONObject clients = messageD.getMessage(id);
@@ -61,13 +64,12 @@ public class MessageImpl implements MessageService{
             } else {
                 res.setBody(clients).setCode(200);
             }
-            
+
         } catch (Exception e) {
             res.setCode(500);
-            
+
         }
         return res.getRes();
     }
 
-    
 }

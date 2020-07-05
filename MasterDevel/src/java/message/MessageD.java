@@ -17,4 +17,6 @@ public interface MessageD {
     
     public JSONObject getMessage(String id);
     
+    public boolean validateKey(String key);
+    
 }

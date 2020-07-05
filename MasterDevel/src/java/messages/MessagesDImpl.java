@@ -46,5 +46,28 @@ public class MessagesDImpl extends PoolConnection implements MessagesD {
         }
         return messages;
     }
+    
+    @Override
+    public boolean validateKey(String key) {
+        boolean estado = false;
+        try {
+            this.conectarJNDI();
+            String Query = "SELECT ID_KEY , DESC TABLE_KEY WHERE ID_KEY = " + key;
+            
+            ResultSet res = this.Consultar(Query);
+            
+            if (res.next()) {
+                estado = true;
+            }
+            this.cerrarConexion();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            
+            
+        }finally{
+            this.cerrarConexion();
+        }
+        return estado;
+    }
 
 }
