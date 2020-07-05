@@ -6,11 +6,7 @@
 package credential;
 
 import WS.PoolConnection;
-import java.sql.CallableStatement;
 import java.sql.ResultSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.json.JSONObject;
 
 /**
  *
