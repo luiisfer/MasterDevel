@@ -7,11 +7,14 @@ package credential;
 
 import WS.PoolConnection;
 import java.sql.ResultSet;
+import javax.enterprise.inject.Default;
 
 /**
  *
  * @author luiis
  */
+
+@Default
 public class CredentialDImpl extends PoolConnection implements CredentialD{
 
     public CredentialDImpl() {

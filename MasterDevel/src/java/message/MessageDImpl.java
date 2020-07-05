@@ -9,9 +9,8 @@ import WS.PoolConnection;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.json.JSONArray;
+import javax.enterprise.inject.Default;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -19,7 +18,13 @@ import org.json.JSONObject;
  *
  * @author luiis
  */
+
+@Default
 public class MessageDImpl extends PoolConnection implements MessageD{
+    
+    public MessageDImpl() {
+        super("jdbc/localhost");
+    }
     
     @Override
     public JSONObject createMessage(String msg, String tags){

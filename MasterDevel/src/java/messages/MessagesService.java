@@ -3,17 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package credential;
+package messages;
 
-
+import javax.ws.rs.core.Response;
 
 /**
  *
  * @author luiis
  */
-public interface CredentialD {
+public interface MessagesService {
     
-    public boolean getKey(String key);
     
-    public boolean createKey(String key);
+    public Response getMessages(String tag, String xkey);
 }

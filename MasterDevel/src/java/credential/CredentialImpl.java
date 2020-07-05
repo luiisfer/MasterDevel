@@ -6,6 +6,7 @@
 package credential;
 
 import WS.ResponseModel;
+import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 import org.json.JSONException;
@@ -15,6 +16,8 @@ import org.json.JSONObject;
  *
  * @author luiis
  */
+
+@Default
 public class CredentialImpl implements CredentialService {
 
     @Inject

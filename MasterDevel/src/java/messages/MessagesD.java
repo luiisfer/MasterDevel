@@ -3,17 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package credential;
+package messages;
 
-
+import org.json.JSONArray;
 
 /**
  *
  * @author luiis
  */
-public interface CredentialD {
+public interface MessagesD {
     
-    public boolean getKey(String key);
+    public JSONArray getMessages(String tag);
     
-    public boolean createKey(String key);
 }

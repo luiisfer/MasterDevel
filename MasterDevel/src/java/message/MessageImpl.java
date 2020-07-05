@@ -6,11 +6,9 @@
 package message;
 
 import WS.ResponseModel;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.ws.rs.core.Response;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -18,6 +16,8 @@ import org.json.JSONObject;
  *
  * @author luiis
  */
+
+@Default
 public class MessageImpl implements MessageService{
 
     @Inject
