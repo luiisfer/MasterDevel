@@ -1,7 +1,7 @@
 # MasterDevel
-Master Development - Prueba backend
+## Master Development - Prueba backend
 
-# Prueba Backend
+### Prueba Backend
 
 El siguiente ejercicio fue realizado con el lenguaje Java por medio del Middleware WebLogic Localmente el cual contiene un jndi que se conecta ala base de datos local
 1. Instalar WebLogic
