@@ -33,6 +33,12 @@ public class MessageController {
 
     @HeaderParam("X-Key")
     String xKey;
+    
+    @HeaderParam("X-Route")
+    String xRoute;
+    
+    @HeaderParam("X-Signature")
+    String xSignature;
 
     /**
      * Creates a new instance of MessageController
@@ -45,16 +51,17 @@ public class MessageController {
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response getMessage(@PathParam("id") String id) {
-        return messageService.getMessage(id, xKey);
+        return messageService.getMessage(id, xKey, xSignature);
     }
     /**
      * PUT method for updating or creating an instance of MessageController
      *
      * @param content representation for the resource
+     * @return 
      */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createMessage(String content) {
-        return messageService.createMessage(content, xKey);
+        return messageService.createMessage(content, xKey, xSignature);
     }
 }

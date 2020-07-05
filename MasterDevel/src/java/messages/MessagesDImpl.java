@@ -69,5 +69,28 @@ public class MessagesDImpl extends PoolConnection implements MessagesD {
         }
         return estado;
     }
+    
+     @Override
+    public boolean validateSignature(String sharedkey) {
+        boolean estado = false;
+        try {
+            this.conectarJNDI();
+            String Query = "SELECT SHAREDKEY FROM TABLE_KEY WHERE SHAREDKEY = " + sharedkey;
+            
+            ResultSet res = this.Consultar(Query);
+            
+            if (res.next()) {
+                estado = true;
+            }
+            this.cerrarConexion();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            
+            
+        }finally{
+            this.cerrarConexion();
+        }
+        return estado;
+    }
 
 }

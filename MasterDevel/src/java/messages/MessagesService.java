@@ -14,5 +14,5 @@ import javax.ws.rs.core.Response;
 public interface MessagesService {
     
     
-    public Response getMessages(String tag, String xkey);
+    public Response getMessages(String tag, String xkey , String xSignature);
 }

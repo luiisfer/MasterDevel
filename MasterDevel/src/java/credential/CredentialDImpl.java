@@ -26,7 +26,7 @@ public class CredentialDImpl extends PoolConnection implements CredentialD{
         boolean estado = false;
         try {
             this.conectarJNDI();
-            String Query = "SELECT ID_KEY , DESC TABLE_KEY WHERE ID_KEY = " + key;
+            String Query = "SELECT ID_KEY  TABLE_KEY WHERE ID_KEY = " + key;
             
             ResultSet res = this.Consultar(Query);
             
@@ -45,11 +45,11 @@ public class CredentialDImpl extends PoolConnection implements CredentialD{
     }
     
     @Override
-    public boolean createKey(String key){
+    public boolean createKey(String key, String shared_secret){
         boolean estado = false;
         try {
             this.conectarJNDI();
-            String Query = "INSERT INTO TABLE_KEY(ID_KEY) VALUES(" + key + ")";
+            String Query = "INSERT INTO TABLE_KEY(ID_KEY, SHAREDKEY) VALUES(" + key + ", "+shared_secret+")";
             estado = this.ExecThrows(Query) > 0;
         } catch (Exception ex) {
             System.out.println("Error" + ex);

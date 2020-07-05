@@ -17,4 +17,6 @@ public interface MessagesD {
     
     public boolean validateKey(String key);
     
+    public boolean validateSignature(String sharedKey);
+    
 }

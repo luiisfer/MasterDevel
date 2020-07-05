@@ -13,7 +13,7 @@ import javax.ws.rs.core.Response;
  */
 public interface MessageService {
     
-    public Response createMessage(String request, String xkey);
+    public Response createMessage(String request, String xkey, String xSignature);
     
-    public Response getMessage(String id, String xkey);
+    public Response getMessage(String id, String xkey, String xSignature);
 }

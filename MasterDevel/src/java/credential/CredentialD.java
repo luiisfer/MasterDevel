@@ -15,5 +15,5 @@ public interface CredentialD {
     
     public boolean getKey(String key);
     
-    public boolean createKey(String key);
+    public boolean createKey(String key, String shared_secret);
 }

@@ -41,7 +41,7 @@ public class CredentialImpl implements CredentialService {
                 res.setCode(403);
             } else {
                 res.setCode(204);
-                credentialD.createKey(key);
+                credentialD.createKey(key, shared_secret);
             }
             return res.getRes();    
         } catch (JSONException ex) {

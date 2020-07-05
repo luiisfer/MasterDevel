@@ -25,7 +25,7 @@ public class MessageImpl implements MessageService {
     private ResponseModel res;
 
     @Override
-    public Response createMessage(String request, String xkey) {
+    public Response createMessage(String request, String xkey, String xSignature) {
         try {
             res = new ResponseModel();
             JSONObject req;
@@ -34,15 +34,18 @@ public class MessageImpl implements MessageService {
             req = new JSONObject(request);
             msg = req.getString("msg");
             tags = req.getString("tags");
-            if (messageD.validateKey(xkey) == true) {
-                JSONObject status = messageD.createMessage(msg, tags);
-                if (status.optBoolean("status")) {
-                    res.setCode(200).setBody(status.optLong("newId"));
+            if (messageD.validateSignature(xSignature) == true) {
+                if (messageD.validateKey(xkey) == true) {
+                    JSONObject status = messageD.createMessage(msg, tags);
+                    if (status.optBoolean("status")) {
+                        res.setCode(200).setBody(status.optLong("newId"));
+                    } else {
+                        res.setCode(409);
+                    }
                 } else {
-                    res.setCode(409);
+                    res.setCode(403);
                 }
-            }
-            else{
+            } else {
                 res.setCode(403);
             }
 
@@ -55,14 +58,22 @@ public class MessageImpl implements MessageService {
     }
 
     @Override
-    public Response getMessage(String id, String xkey) {
+    public Response getMessage(String id, String xkey, String xSignature) {
         res = new ResponseModel();
         try {
-            JSONObject clients = messageD.getMessage(id);
-            if (clients.length() == 0) {
-                res.setCode(404);
+            if (messageD.validateSignature(xSignature) == true) {
+                if (messageD.validateKey(xkey) == true) {
+                    JSONObject clients = messageD.getMessage(id);
+                    if (clients.length() == 0) {
+                        res.setCode(404);
+                    } else {
+                        res.setBody(clients).setCode(200);
+                    }
+                } else {
+                    res.setCode(403);
+                }
             } else {
-                res.setBody(clients).setCode(200);
+                res.setCode(403);
             }
 
         } catch (Exception e) {
