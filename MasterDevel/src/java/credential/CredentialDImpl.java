@@ -26,7 +26,7 @@ public class CredentialDImpl extends PoolConnection implements CredentialD{
         boolean estado = false;
         try {
             this.conectarJNDI();
-            String Query = "SELECT ID_KEY  TABLE_KEY WHERE ID_KEY = " + key;
+            String Query = "SELECT ID_KEY FROM TABLE_KEY WHERE ID_KEY = " + key;
             
             ResultSet res = this.Consultar(Query);
             

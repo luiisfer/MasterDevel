@@ -52,7 +52,7 @@ public class MessagesDImpl extends PoolConnection implements MessagesD {
         boolean estado = false;
         try {
             this.conectarJNDI();
-            String Query = "SELECT ID_KEY , DESC TABLE_KEY WHERE ID_KEY = " + key;
+            String Query = "SELECT ID_KEY , DESC FROM TABLE_KEY WHERE ID_KEY = " + key;
             
             ResultSet res = this.Consultar(Query);
             
