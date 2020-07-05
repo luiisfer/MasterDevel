@@ -28,6 +28,6 @@ TBL_MESSAGE
 
 Con el programa cliente el cual fue desarrollado con con lenguaje PHP consume todos los REST descritos arriba
 
-Instalando XAMP como Servidor y de esta manera se podra ejecutar el archivo PHP, para el consumo de los metodos REST
+1.Instalando XAMP como Servidor y de esta manera se podra ejecutar el archivo PHP, para el consumo de los metodos REST
 
 
