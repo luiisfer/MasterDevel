@@ -7,8 +7,8 @@ El siguiente ejercicio fue realizado con el lenguaje Java por medio del Middlewa
 
 Estas son las urls que actualmente esta en local
 
-http://localhost:7001/MasterDevel/webresources/credential 
-http://localhost:7001/MasterDevel/webresources/message 
+http://localhost:7001/MasterDevel/webresources/credential	
+http://localhost:7001/MasterDevel/webresources/message	
 http://localhost:7001/MasterDevel/webresources/message/1/ 
 http://localhost:7001/MasterDevel/webresources/messages/Bienvenido/ 
 
